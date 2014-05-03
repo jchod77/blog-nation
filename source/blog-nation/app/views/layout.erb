@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -12,12 +12,40 @@
   -->
   <link rel="stylesheet" href="/css/application.css">
 
+
+
+  <title>Blog-Nation</title>
+</head>
+<body>
+  <div class="nav-bar">
+    <ul class="nav">
+      <li><a href='/'>Home</a></li>
+      <li><a href='/'>Users</a></li>
+      <li><a href='/'>Posts</a></li>
+      <% if !session[:id] %>
+        <li><a href='/users/login'>Log-in</a></li>
+      <% else %>
+        <li><a href='/posts/<%= session[:id] %>'>Profile</a></li>
+        <li><a href='/users/secure/logout'>Log-out</a></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="main">
+    <div id="sidebar">
+      <% @tags.each do |tag| %>
+      <%= tag.name %>,
+      <% end %>
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+
+  </div>
+
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
-</head>
-<body>
-  <%= yield %>
 </body>
 </html>
