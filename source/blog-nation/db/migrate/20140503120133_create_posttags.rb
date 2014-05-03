@@ -5,5 +5,6 @@ class CreatePosttags < ActiveRecord::Migration
       t.integer :tag_id
 
       t.timestamps
+    end
   end
 end
