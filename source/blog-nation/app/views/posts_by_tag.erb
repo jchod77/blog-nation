@@ -1,0 +1,16 @@
+<div class="container">
+
+    <table>
+    <th>All Post with #<%= @target_tag.name %> Tag</th>
+    <% @posts.each do |post| %>
+    <tr class="post-title">
+      <td><a href="/posts/<%= post.id %>"><%= post.title %></a></td>
+      <% if session[:id] == post.user_id %>
+      <td><a href="/posts/edit/<%= post.id %>">Edit post</a></td>
+      <td><a href="/posts/delete/<%= post.id %>">Delete Post</a></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

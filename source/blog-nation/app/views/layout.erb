@@ -34,8 +34,9 @@
 
   <div id="main">
     <div id="sidebar">
+      <p>Find Posts by Tag</p>
       <% @tags.each do |tag| %>
-      <%= tag.name %>,
+      <a href="/posts/tag/<%= tag.id %>">#<%= tag.name %>,</a>
       <% end %>
     </div>
     <div id="content">

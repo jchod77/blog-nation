@@ -9,14 +9,14 @@
 </div>
 <div>
 <label for="content">What's on your mind... </label>
-<textarea rows="4" cols="50" name="post[content]" form="edit" value="<%= @post.try(:content) %>">
-
+<textarea rows="4" cols="50" name="post[content]" value="<%= @post.try(:content) %>">
 </textarea>
-
 </div>
+<div>
+  <input id="user_id" type="hidden" name="post[user_id]" value="<%=session[:id] %>"
 <div>
   <input type="submit">
 </div>
-<!-- </form> -->
+
 
 
