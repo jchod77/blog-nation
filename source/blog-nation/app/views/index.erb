@@ -1,7 +1,8 @@
 <div class="container">
   <h1>Blog-Nation</h1>
-  <p>Hello, world!</p>
+
     <% if session[:id] %>
+      <p> Hello, <%= @user.name %></p>
       <%= erb :_profile, layout: false %>
     <% else %>
       <%= erb :_login, layout: false %>

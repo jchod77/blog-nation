@@ -1,0 +1,19 @@
+<div>
+<div>
+
+  <p>Title: </p>
+  <p><%= @post.title %></p>
+</div>
+<div>
+  <p>Photo (optional): </p>
+  <p><img border="0" src="<%= @post.photo_url %>"></p>
+</div>
+<div>
+<p>Your post: </p>
+<p><%= @post.content %></p>
+</div>
+  <h2>Are you sure you want to delete?  I won't be able to recover it...</h2>
+    <form action="/posts/delete/<%= @post.id %>" method="POST">
+    <input type="submit" value="Delete">
+    </form>
+</div>

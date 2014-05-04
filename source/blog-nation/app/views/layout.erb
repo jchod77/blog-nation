@@ -20,12 +20,13 @@
   <div class="nav-bar">
     <ul class="nav">
       <li><a href='/'>Home</a></li>
-      <li><a href='/'>Users</a></li>
-      <li><a href='/'>Posts</a></li>
+      <li><a href='/users/all'>Bloggers</a></li>
+      <li><a href='/posts/all'>Posts</a></li>
       <% if !session[:id] %>
         <li><a href='/users/login'>Log-in</a></li>
       <% else %>
-        <li><a href='/posts/<%= session[:id] %>'>Profile</a></li>
+        <li><a href='/users/secure/posts/create'>Create a New Post</a></li>
+        <li><a href='/users/secure/posts/all/<%= session[:id] %>'>Your Posts</a></li>
         <li><a href='/users/secure/logout'>Log-out</a></li>
       <% end %>
     </ul>

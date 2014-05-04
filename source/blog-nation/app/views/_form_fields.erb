@@ -1,0 +1,22 @@
+<div>
+
+  <label for="title">Title: </label>
+  <input id="title" type="text" name="post[title]" value="<%= @post.try(:title) %>">
+</div>
+<div>
+  <label for="photo_url">Photo link (optional): </label>
+  <input id="photo_url" type="url" name="post[photo_url]" value="<%= @post.try(:photo_url) %>">
+</div>
+<div>
+<label for="content">What's on your mind... </label>
+<textarea rows="4" cols="50" name="post[content]" form="edit" value="<%= @post.try(:content) %>">
+
+</textarea>
+
+</div>
+<div>
+  <input type="submit">
+</div>
+<!-- </form> -->
+
+

@@ -1,0 +1,16 @@
+<div class="container">
+
+    <table>
+    <th>User Name</th>
+
+    <th>Number of Posts</th>
+    <% @users.each do |user| %>
+    <tr class="user-name">
+      <td><a href="#"><%= user.name %></a></td>
+      <td></td>
+      <td><a href="#"><%= user.posts.length %></a></td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>
