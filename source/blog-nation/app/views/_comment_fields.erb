@@ -1,0 +1,9 @@
+  <h2>Comment on: <%= @post.title %></h2>
+    <form action="/posts/<%= @post.id %>/comments/new" method="POST">
+      <label for="content">Leave you comment here: </label><br>
+      <textarea rows="4" cols="50" name="content"></textarea>
+      <br>
+      <input type="hidden" name="user_id" value="<%=session[:id] %>">
+      <input type="hidden" name="post_id" value="<%=@post.id %>">
+      <input type="submit" value="Submit!">
+    </form>

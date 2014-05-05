@@ -57,3 +57,32 @@ post '/users/create_account' do
 
   redirect '/'
 end
+
+#USERS PAGES
+#------------------------------------------------------------
+get '/users/all' do
+@users = User.all
+@tags = Tag.all
+erb :all_users
+end
+
+get '/users/:id/posts' do
+  @user = User.find_by_id(params[:id])
+  @posts = @user.posts
+  @tags = Tag.all
+
+  erb :user_posts
+end
+
+
+
+
+
+
+
+
+
+
+
+
+

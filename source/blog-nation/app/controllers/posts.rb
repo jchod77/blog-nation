@@ -18,6 +18,7 @@ get '/posts/:id' do
   @post = Post.find(params[:id])
   @tags = Tag.all
   @comments = @post.comments
+  @post_tags = @post.tags
 
   erb :single_post
 end
@@ -32,12 +33,20 @@ end
 post '/users/secure/posts/create' do
   @post = Post.new(params[:post])
   @post.save
-    p "==================================="
-  p @post.id
-  p "------------------------------------"
-  # Need to fix redirect link.  New post is being created and saved but
-  # I'm not passing anything into the wildcard in the redirect below
-  redirect '/posts/:id'
+  p "++++++++++++++++++++++++++++++++++"
+  p params[:tag].class
+  p "++++++++++++++++++++++++++++++++++"
+
+  @tag_arr = params[:name].values
+  @tags = @tag_arr.downcase.split(",")
+  @tags.each do |tag|
+    each_tag = Tag.find_or_create_by_tag_name(tag)
+    PostTag.create(post_id: @post.id, tag_id: each_tag.id)
+    end
+  p "++++++++++++++++++++++++++++++++++"
+  p @tag
+  p "++++++++++++++++++++++++++++++++++"
+  redirect "/posts/#{@post.id}"
 end
 
 get '/users/secure/posts/all/:id' do

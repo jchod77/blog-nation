@@ -20,10 +20,6 @@ get '/' do
   erb :index
 end
 
-get '/users/all' do
-@users = User.all
-@tags = Tag.all
-erb :all_users
-end
+
 
 

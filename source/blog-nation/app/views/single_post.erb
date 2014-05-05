@@ -1,21 +1,24 @@
 <div class="container">
   <div class"post-title"><h1><%= @post.title %></h1></div>
-  <div class="post-photo"><img src= '<%= @post.photo_url %>'</div>
+  <div class="post-photo"><a href='<%= @post.photo_url %>'
+        target="_blank"><img  class="resize" src= '<%= @post.photo_url %>' width="200" height="200"></a></div>
   <div class="post-content"><%= @post.content %></div>
-</div>
-<div class="comments">
+
+
+  <p>Tags:
+      <% @post_tags.each do |tag| %>
+      #<%= tag.name %>,
+      <% end %></p>
+<div>
   <p> Comments </p>
   <% @comments.each do |comment| %>
   <div><%= comment.content %>
-    Posted by:<%= comment.user.name %> on <%= comment.created_at.to_formatted_s(:short)%>
+    Added by: <a href="/users/<%= comment.user_id %>/posts"><%= comment.user.name %></a> on <%= comment.created_at.to_formatted_s(:short)%>
   </div>
   -----------------------------------
   <% end %>
-  <div> <form action='/comment/new' method="get">
-          <input type="hidden" name="post_id" value="<% @post.id %>">
-          <input type="submit" value="add your comment!">
-        </form>
+  <div> <a id="new-comment" href="/posts/<%= @post.id %>/comments/new">Add your comment</a>
   </div>
 </div>
-
+</div>
 

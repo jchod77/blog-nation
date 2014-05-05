@@ -1,0 +1,19 @@
+<div class="container">
+  <h1><%= @user.name %>'s Blog Page</h1>
+    <table>
+    <th>Post title</th>
+      <% @posts.each do |post| %>
+      <tr class="post-title">
+        <td><a href="/posts/<%= post.id %>"><%= post.title %></a></td>
+        <td></td>
+        <td></td>
+        <td>Posted on: <%= post.created_at.to_formatted_s(:short)%></td>
+        <% if session[:id] == post.user_id %>
+        <td><a href="/posts/edit/<%= post.id %>">Edit post</a></td>
+        <td><a href="/posts/delete/<%= post.id %>">Delete Post</a></td>
+        <% end %>
+        </tr>
+      <% end %>
+  </table>
+
+</div>
