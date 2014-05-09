@@ -1,21 +1,21 @@
 <div>
 
-  <label for="title">Title: </label>
+  <label for="title">Title: </label><br>
   <input id="title" type="text" name="post[title]" value="<%= @post.try(:title) %>">
 </div>
 <div>
-  <label for="photo_url">Photo link (optional): </label>
+  <label for="photo_url">Photo link (optional): </label><br>
   <input id="photo_url" type="url" name="post[photo_url]" value="<%= @post.try(:photo_url) %>">
 </div>
 <div>
-<label for="content">What's on your mind... </label>
+<label for="content">What's on your mind... </label><br>
 <textarea rows="4" cols="50" name="post[content]" value="<%= @post.try(:content) %>">
 </textarea>
 </div>
 <div>
   <input id="user_id" type="hidden" name="post[user_id]" value="<%=session[:id] %>"
 <div>
-  <label for="tags">Add Tags: </label>
+  <label for="tags">Add Tags: </label><br>
   <input id="tags" type="text" name="tag[name]" placeholder="tags should be comma separated"><br>
   <input type="submit">
 </div>

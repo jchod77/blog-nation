@@ -20,6 +20,10 @@ get '/' do
   erb :index
 end
 
+get '/espn' do 
+    @tags = Tag.all
+  erb :espn
+end
 
 
 

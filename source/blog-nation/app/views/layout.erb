@@ -6,6 +6,8 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
+    <!--   <title>ESPN Sports API | WebSpeaks.in</title> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" href="/css/normalize.css">
   <!--
     application.css is where you put your styles
@@ -14,14 +16,15 @@
 
 
 
-  <title>Blog-Nation</title>
+  <title>Dawg Nation</title>
 </head>
 <body>
   <div class="nav-bar">
     <ul class="nav">
       <li class="nav-item"><a href='/'>Home</a></li>
-      <li class="nav-item"><a href='/users/all'>Bloggers</a></li>
-      <li class="nav-item"><a href='/posts/all'>Posts</a></li>
+      <li class="nav-item"><a href='/users/all'>Fan Blogs</a></li>
+      <li class="nav-item"><a href='/posts/all'>All Posts</a></li>
+      <li class="nav-item"><a href='/espn'>Top Stories</a></li>
       <% if !session[:id] %>
         <li class="nav-item"><a href='/users/login'>Log-in</a></li>
       <% else %>
@@ -42,12 +45,61 @@
     <div id="content">
       <%= yield %>
     </div>
-
   </div>
-
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
+<!-- // Countdon timer implementation
+// ---------------------------------------- -->
+
+
+<script>
+
+    CountDownTimer('07/25/2014 07:30 PM', 'countdown');
+    CountDownTimer('09/07/2014 01:00 PM', 'newcountdown');
+
+    function CountDownTimer(dt, id)
+    {
+        var end = new Date(dt);
+
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+        function showRemaining() {
+            var now = new Date();
+            var distance = end - now;
+            if (distance < 0) {
+
+                clearInterval(timer);
+                document.getElementById(id).innerHTML = 'EXPIRED!';
+
+                return;
+            }
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor((distance % _day) / _hour);
+            var minutes = Math.floor((distance % _hour) / _minute);
+            var seconds = Math.floor((distance % _minute) / _second);
+
+            document.getElementById(id).innerHTML = days + 'days ';
+            document.getElementById(id).innerHTML += hours + 'hrs ';
+            document.getElementById(id).innerHTML += minutes + 'mins ';
+            document.getElementById(id).innerHTML += seconds + 'secs';
+        }
+
+        timer = setInterval(showRemaining, 1000);
+    }
+
+</script>
+<div id="timer-clock">
+<p> Training Camp opens in:</p>
+<div id="countdown"></div>
+<br>
+<p> Regular Season starts in:</p>
+<div id="newcountdown"></div>
+</div>
 </body>
 </html>

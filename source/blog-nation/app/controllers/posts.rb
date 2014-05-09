@@ -11,7 +11,7 @@ end
 get '/posts/all' do
   @posts = Post.all
   @tags = Tag.all
-  erb :all_posts
+  erb :'/post/all_posts'
 end
 
 get '/posts/:id' do
@@ -20,13 +20,13 @@ get '/posts/:id' do
   @comments = @post.comments
   @post_tags = @post.tags
 
-  erb :single_post
+  erb :'/post/single_post'
 end
 
 get '/users/secure/posts/create' do
   @tags = Tag.all
 
-  erb :create_post
+  erb :'/post/create_post'
 
 end
 
@@ -54,14 +54,14 @@ get '/users/secure/posts/all/:id' do
   @posts = Post.find_all_by_user_id(params[:id])
   p "++++++++++++++++++++++++++++++++++"
   p @posts
-  erb :profile
+  erb :'/user/profile'
 end
 
 get '/posts/edit/:id' do
   @post = Post.find(params[:id])
   @tags = Tag.all
 
-  erb :edit_post
+  erb :'/post/edit_post'
 end
 post '/posts/edit/:id' do
   @post = Post.find(params[:id])
@@ -74,7 +74,7 @@ end
 get '/posts/delete/:id' do
    @post = Post.find(params[:id])
    @tags = Tag.all
-   erb :delete_post
+   erb :'/post/delete_post'
 end
 
 post '/posts/delete/:id' do
@@ -87,7 +87,7 @@ get '/posts/tag/:id' do
   @tags = Tag.all
   @target_tag = Tag.find_by_id(params[:id])
   @posts = @target_tag.posts
-  erb :posts_by_tag
+  erb :'/post/posts_by_tag'
 end
 
 

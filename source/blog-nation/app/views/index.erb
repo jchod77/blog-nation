@@ -1,11 +1,12 @@
 <div class="container">
-  <h1>Blog-Nation</h1>
+  <h1>Dawg Nation</h1>
 
     <% if session[:id] %>
       <p> Hello, <%= @user.name %></p>
-      <%= erb :_profile, layout: false %>
+
+      <%= erb :'/partials/_profile', layout: false %>
     <% else %>
-      <%= erb :_login, layout: false %>
+      <%= erb :'/partials/_login', layout: false %>
     <% end %>
 
 
